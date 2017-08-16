@@ -1,0 +1,1 @@
+new `standalone` version
