@@ -243,12 +243,9 @@ class MpatNewPage extends React.PureComponent {
       },
       (a) => {
         const id = Number(a.data.id);
-        this.setState(
-          {
-            stepTag: 'done'
-          },
-          this.waitForChildEdited(this.state.newPageTitle, id)
-        );
+        window.location.href = window.location.origin +
+          window.location.pathname.substring(0, window.location.pathname.length - 9) +
+          'post.php?post=' + id + '&action=edit';
       },
       (e) => {
         this.setState({
