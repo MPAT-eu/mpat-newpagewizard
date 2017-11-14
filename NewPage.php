@@ -19,25 +19,27 @@
  *
  * AUTHORS:
  * Jean-Philippe Ruijs (jean-philippe@ruijs.fr)
+ * Jean-Claude Dufourd (jean-claude.dufourd@telecom-paristech.fr)
  *
  **/
 /*
  * Plugin Name: MPAT New Page Wizard
  * Plugin URI: https://github.com/jeanphilipperuijs/mpat-newpage-wizard/
  * Description: Wizard for creating new pages for MPAT
- * Version: 2.0.alpha
+ * Version: 2.0
  * Author: Jean-Philippe Ruijs
  * Author URI: https://github.com/jeanphilipperuijs/
+ * Author: Jean-Claude Dufourd (jean-claude.dufourd@telecom-paristech.fr)
  * License: GPL2
  */
  namespace MPAT\NewPageWizard;
- 
+
  class NewPage
  {
      function init()
      {
  //      add_menu_page('Wizard', 'Wizard', 'manage_options', 'MPAT_NewPageWizard', array(&$this, 'js'), 'dashicons-welcome-learn-more');
-         add_submenu_page('_doesntexist','Wizard','','manage_options', 'MPAT_NewPageWizard', array(&$this, 'js'), 'dashicons-welcome-learn-more');
+         add_submenu_page('_doesntexist','Wizard','','edit_pages', 'MPAT_NewPageWizard', array(&$this, 'js'), 'dashicons-welcome-learn-more');
          add_action('admin_footer', array(&$this, 'insert'));
      }
      function js()
@@ -63,7 +65,7 @@
        }
      }
  }
- 
+
  $np = new NewPage();
  add_action("admin_menu",array(&$np, "init") );
- 
+
