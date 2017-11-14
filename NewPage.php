@@ -24,11 +24,10 @@
  **/
 /*
  * Plugin Name: MPAT New Page Wizard
- * Plugin URI: https://github.com/jeanphilipperuijs/mpat-newpage-wizard/
+ * Plugin URI: https://github.com/MPAT-eu/mpat-newpagewizard/
  * Description: Wizard for creating new pages for MPAT
  * Version: 2.0
  * Author: Jean-Philippe Ruijs
- * Author URI: https://github.com/jeanphilipperuijs/
  * Author: Jean-Claude Dufourd (jean-claude.dufourd@telecom-paristech.fr)
  * License: GPL2
  */
