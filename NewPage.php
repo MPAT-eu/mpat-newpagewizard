@@ -44,7 +44,7 @@
      function js()
      {
          wp_enqueue_script('wp-api');
-         wp_enqueue_script('mpat-newpage-wizard', plugin_dir_url(__FILE__) . 'public/rui.js', array('wp-api'), 1.0, true );
+         wp_enqueue_script('mpat-newpagewizard', plugin_dir_url(__FILE__) . 'public/rui.js', array('wp-api'), 1.0, true );
      }
      function insert() {
        if (isset($_GET['post_type']) && $_GET['post_type'] === 'page' ) {
