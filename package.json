@@ -10,14 +10,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:jeanphilipperuijs/mpat-newpage-wizard.git"
+    "url": "git@github.com:MPAT-eu/mpat-newpagewizard.git"
   },
   "author": "Jean-Philippe Ruijs",
   "license": "GPL-2.0",
   "bugs": {
-    "url": "https://github.com/jeanphilipperuijs/mpat-newpage-wizard/issues"
+    "url": "https://github.com/MPAT-eu/mpat-newpagewizard/issues"
   },
-  "homepage": "https://github.com/jeanphilipperuijs/mpat-newpage-wizard",
+  "homepage": "https://github.com/MPAT-eu/mpat-newpagewizard",
   "dependencies": {
     "axios": "^0.16.2",
     "babel-core": "^6.25.0",
