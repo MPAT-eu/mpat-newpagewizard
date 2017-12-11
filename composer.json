@@ -1,5 +1,5 @@
 {
-    "name" : "mpat/newpage-wizard",
+    "name" : "mpat/mpat-newpagewizard",
     "description" : "Wizard for creating new pages for MPAT",
     "version" : "1.0.0",
     "license" : "GPL2",
