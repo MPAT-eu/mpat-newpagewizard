@@ -11,7 +11,7 @@
     "repositories" : [
         {
             "type" : "vcs",
-            "url" : "git@github.com:jeanphilipperuijs/mpat-newpage-wizard.git"
+            "url" : "git@github.com:MPAT-eu/mpat-newpagewizard.git"
         }
     ],
     "type" : "wordpress-plugin"
