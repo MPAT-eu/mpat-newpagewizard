@@ -1,0 +1,1 @@
+<?php update_option('mpatNewPageWizard', array('replace' => 1)); ?>

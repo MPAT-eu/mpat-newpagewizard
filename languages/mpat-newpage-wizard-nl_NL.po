@@ -1,0 +1,70 @@
+# Copyright (C) 2017 MPAT New Page Wizard
+# This file is distributed under the same license as the MPAT New Page Wizard package.
+msgid ""
+msgstr ""
+"Project-Id-Version: MPAT New Page Wizard 2.0.beta\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/mpat-newpage-"
+"wizard\n"
+"POT-Creation-Date: 2017-10-19 16:48+0200\n"
+"PO-Revision-Date: 2017-10-19 16:49+0200\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: nl_NL\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.8.11\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: NewPage.php:22 NewPage.php:27 NewPage.php:63 NewPage.php:69
+msgid "Wizard"
+msgstr "Assistent"
+
+#: NewPage.php:29
+msgid "NewPage Wizard settings"
+msgstr "Instellingen voor Nieuwe Pagina Assistent"
+
+#: NewPage.php:35
+msgid "Remove \"Add-Page\" (show only the Wizard button)"
+msgstr ""
+"Toon alleen de <i>'Assistent'</i> knop.<br /><small>Verwijder knop "
+"<i>'Nieuwe&nbsp;pagina'</i> van overzicht.</small>"
+
+#. Plugin Name of the plugin/theme
+msgid "MPAT New Page Wizard"
+msgstr "MPAT Pagina Assistent"
+
+#. Plugin URI of the plugin/theme
+msgid "https://github.com/jeanphilipperuijs/mpat-newpage-wizard/"
+msgstr ""
+
+#. Description of the plugin/theme
+msgid "Wizard for creating new pages for MPAT"
+msgstr "Assistent voor het aanmaken van een nieuwe MPAT pagina"
+
+#. Author of the plugin/theme
+msgid "Jean-Philippe Ruijs"
+msgstr ""
+
+#. Author URI of the plugin/theme
+msgid "https://github.com/jeanphilipperuijs/"
+msgstr ""
+
+#~ msgid "New Page Wizard"
+#~ msgstr "Nieuwe Pagina Assistent"
+
+#~ msgid "Remove \"Add-Page\" (show only the Wizard button"
+#~ msgstr ""
+#~ "Verwijder de \"nieuwe pagina\" knop. (Toont alleen de assistent knop)"
+
+#~ msgid "Options"
+#~ msgstr "Opties"
+
+#~ msgid "Replace the button 'Add New'"
+#~ msgstr "Vervang de knop 'Nieuw pagina'"
+
+#~ msgid "New Page Editor"
+#~ msgstr "Pagina Assistent"
+
+#~ msgid "Replace with new page button"
+#~ msgstr "Vervang de 'nieuwe pagina' knop"

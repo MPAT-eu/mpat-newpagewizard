@@ -1,0 +1,61 @@
+# Copyright (C) 2017 MPAT New Page Wizard
+# This file is distributed under the same license as the MPAT New Page Wizard package.
+msgid ""
+msgstr ""
+"Project-Id-Version: MPAT New Page Wizard 2.0.beta\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/mpat-newpage-"
+"wizard\n"
+"POT-Creation-Date: 2017-10-19 16:48+0200\n"
+"PO-Revision-Date: 2017-10-19 16:48+0200\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: de_DE\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.8.11\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: NewPage.php:22 NewPage.php:27 NewPage.php:63 NewPage.php:69
+msgid "Wizard"
+msgstr "Seiten-Assistent"
+
+#: NewPage.php:29
+msgid "NewPage Wizard settings"
+msgstr ""
+
+#: NewPage.php:35
+msgid "Remove \"Add-Page\" (show only the Wizard button)"
+msgstr ""
+
+#. Plugin Name of the plugin/theme
+msgid "MPAT New Page Wizard"
+msgstr "MPAT Seiten-Assistent"
+
+#. Plugin URI of the plugin/theme
+msgid "https://github.com/jeanphilipperuijs/mpat-newpage-wizard/"
+msgstr ""
+
+#. Description of the plugin/theme
+msgid "Wizard for creating new pages for MPAT"
+msgstr "Assistent für die Erstellung neuer Seiten in MPAT"
+
+#. Author of the plugin/theme
+msgid "Jean-Philippe Ruijs"
+msgstr ""
+
+#. Author URI of the plugin/theme
+msgid "https://github.com/jeanphilipperuijs/"
+msgstr ""
+
+#~ msgid "Remove \"Add-Page\" (show only the Wizard button"
+#~ msgstr "Remove \"Add-Page\" (show only the Wizard button)"
+
+#~ msgid "Options"
+#~ msgstr "Optionen"
+
+#~ msgid "Replace the button 'Add New'"
+#~ msgstr "Ersetzen Sie die Schaltfläche 'Neu hinzufügen'"
+
+#~ msgid "New Page Editor"
+#~ msgstr "Editor für Neue Seiten"

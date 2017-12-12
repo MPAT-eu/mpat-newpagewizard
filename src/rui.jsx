@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import CRUD from './crud';
-import i18n from './i18n';
+import l10n from './languages';
 
 import { overlayConfirm, getButton, getInput, getEditPostUrl } from './tools.jsx';
 
@@ -21,9 +21,9 @@ class MpatNewPage extends React.PureComponent {
 
     // order and description of the steps
     /*  this.flow = {
-        base: i18n.flow.base,
-        layout: i18n.flow.layout,
-        model: i18n.flow.model
+        base: l10n.flow.base,
+        layout: l10n.flow.layout,
+        model: l10n.flow.model
       };*/
 
     // things that change
@@ -69,10 +69,14 @@ class MpatNewPage extends React.PureComponent {
       alert('wpApiSettings object not found!');
       this.setState({ errMsg: 'need WP API' });
     } else {
-      //this.setState({ errMsg: 'Detected WP API' });
-      this.modelIO = new CRUD(this.restUrlPageModel);
-      this.layoutIO = new CRUD(this.restUrlPageLayout);
-      this.pageIO = new CRUD(this.restUrlPage);
+      if (window.wpApiSettings.nonce !== undefined) {
+        //this.setState({ errMsg: 'Detected WP API' });
+        this.modelIO = new CRUD(this.restUrlPageModel);
+        this.layoutIO = new CRUD(this.restUrlPageLayout);
+        this.pageIO = new CRUD(this.restUrlPage);
+      } else {
+        this.setState({ errMsg: 'WP API nonce not set' });
+      }
     }
   }
 
@@ -243,9 +247,12 @@ class MpatNewPage extends React.PureComponent {
       },
       (a) => {
         const id = Number(a.data.id);
-        window.location.href = window.location.origin +
-          window.location.pathname.substring(0, window.location.pathname.length - 9) +
-          'post.php?post=' + id + '&action=edit';
+        this.setState(
+          {
+            stepTag: 'done'
+          },
+          this.waitForChildEdited(this.state.newPageTitle, id)
+        );
       },
       (e) => {
         this.setState({
@@ -255,8 +262,8 @@ class MpatNewPage extends React.PureComponent {
   }
 
   waitForChildEdited(title, id) {
-    const msgStr = i18n.formatString(i18n.modal.edit, title);
-
+    const msgStr = l10n.formatString(l10n.modal.edit, title);
+    // console.log(msgStr);
     const confirmCB = () => {
       const openedChild = window.open(getEditPostUrl(id));
       this.childTimer = setInterval(() => {
@@ -269,7 +276,7 @@ class MpatNewPage extends React.PureComponent {
         }
       }, 250);
       const inner = (<div>
-        <h3>Editing {title} in other window...</h3>
+        <h3>Editing {title} in other window</h3>
         <small>If pop-up blocked try <a target="_manualOpen" onClick={() => { this.setState({ child: null }); }} href={getEditPostUrl(id)}>manually</a> opening in another window</small>
       </div>);
       this.setState({
@@ -393,6 +400,7 @@ class MpatNewPage extends React.PureComponent {
 
 
   render() {
+    // console.log('state', this.state);
     /** render/display depends of current step and actions made.
      * two nested switch-case (one for the step, second for the type)
    */
@@ -403,28 +411,35 @@ class MpatNewPage extends React.PureComponent {
     let htmlSelect = null;
 
     if (this.state.stepTag !== 'base') {
-      htmlBackButton = getButton(i18n.stepLabel.back, this.goBack,this.state.stepTag !== 'done'? i18n.stepButton.back: i18n.stepButton.done);
+      htmlBackButton = getButton(l10n.stepLabel.back, this.goBack, this.state.stepTag !== 'done' ? l10n.stepButton.back : l10n.stepButton.done);
     }
 
     let inputPlaceholder = '';
-    inputPlaceholder = i18n.formatString(i18n.inputNew, i18n.flow[this.state.stepTag]);
+    try {
+      inputPlaceholder = l10n.formatString(l10n.inputNew, l10n.flow[this.state.stepTag]);
+    }
+    catch (err) {
+      //console.log(err);
+      //console.log(this.state.stepTag, l10n.inputNew, l10n.flow[this.state.stepTag]);
+      inputPlaceholder = l10n.inputNew + " " + l10n.flow[this.state.stepTag];
+    }
 
     switch (this.state.stepTag) {
       // First step
       case 'base':
-        stepLabel = i18n.formatString(i18n.stepLabel.base, i18n.flow.layout, i18n.flow.model);
+        stepLabel = l10n.formatString(l10n.stepLabel.base, l10n.flow.layout, l10n.flow.model);
         htmlSelect = (<span className="content-editor-container">
           <select onChange={this.onSelectModelOrLayout}>
-            <option>{i18n.optionChoose}...</option>
-            <option value="layout">{i18n.flow.layout}</option>
-            <option value="model">{i18n.flow.model}</option>
+            <option>{l10n.optionChoose}...</option>
+            <option value="layout">{l10n.flow.layout}</option>
+            <option value="model">{l10n.flow.model}</option>
           </select>
         </span>);
         break;
 
       // choose (or create) a new model for your page
       case 'model':
-        stepLabel = this.state.availableModels.length > 0 ? i18n.formatString(i18n.stepLabel.chooseCreate, i18n.flow.model) : i18n.formatString(i18n.stepLabel.createNew, i18n.flow.model);
+        stepLabel = this.state.availableModels.length > 0 ? l10n.formatString(l10n.stepLabel.chooseCreate, l10n.flow.model) : l10n.formatString(l10n.stepLabel.createNew, l10n.flow.model);
         htmlSelect = this.getHtmlSelect(this.state.availableModels, 'model');
 
         htmlInput = getInput('inputModel', this.onInputNewModelName, inputPlaceholder);
@@ -432,25 +447,25 @@ class MpatNewPage extends React.PureComponent {
 
         if (this.state.newPageModelTitle !== null && this.state.newPageModelTitle.length > 0) {
           htmlButtonValidate = getButton(
-            i18n.formatString(i18n.stepLabel.createNew, this.state.newPageModelTitle),
+            l10n.formatString(l10n.stepLabel.createNew, this.state.newPageModelTitle),
             this.createModel,
-            i18n.formatString(i18n.stepLabel.createNew, i18n.flow.model));
+            l10n.formatString(l10n.stepLabel.createNew, l10n.flow.model));
         }
         break;
 
       // choose (or create) a new layout for your page
       case 'layout':
-        stepLabel = this.state.availableLayouts.length > 0 ? i18n.formatString(i18n.stepLabel.chooseCreate, i18n.flow.layout) : i18n.formatString(i18n.stepLabel.createNew, i18n.flow.layout);// 'Choose or create a "Page Layout"' : 'Create a Page Layout';
+        stepLabel = this.state.availableLayouts.length > 0 ? l10n.formatString(l10n.stepLabel.chooseCreate, l10n.flow.layout) : l10n.formatString(l10n.stepLabel.createNew, l10n.flow.layout);// 'Choose or create a "Page Layout"' : 'Create a Page Layout';
         htmlSelect = this.getHtmlSelect(this.state.availableLayouts, 'layout');
 
-        htmlInput = getInput('inputlayout', this.onInputNewLayoutName, inputPlaceholder);
+        htmlInput = getInput('inputLayout', this.onInputNewLayoutName, inputPlaceholder);
         // if a title has been typed => show create button
         if (this.state.newPageLayoutTitle !== null && this.state.newPageLayoutTitle.length > 0) {
           //htmlButtonValidate = getButton(`Create new layout ${this.state.newPageLayoutTitle}`, this.createLayout, 'creat new layout');
           htmlButtonValidate = getButton(
-            i18n.formatString(i18n.stepLabel.createNew, this.state.newPageLayoutTitle),
+            l10n.formatString(l10n.stepLabel.createNew, this.state.newPageLayoutTitle),
             this.createLayout,
-            i18n.formatString(i18n.stepLabel.createNew, i18n.flow.layout));
+            l10n.formatString(l10n.stepLabel.createNew, l10n.flow.layout));
         }
         break;
 
@@ -492,17 +507,17 @@ class MpatNewPage extends React.PureComponent {
 
         htmlInput = getInput('inputpage', this.onInputNewPageName, inputPlaceholder);
         htmlButtonValidate = getButton(
-          i18n.formatString(i18n.stepLabel.createNew, this.state.newPageTitle),
+          l10n.formatString(l10n.optionChoose, this.state.newPageTitle),
           this.createPage,
-          i18n.createEdit);
+          l10n.stepButton.createPage);
 
-        const typeOfPage = this.state.workFlow === 'layout' ? i18n.pageType.layout : i18n.pageType.model;
+        const typeOfPage = this.state.workFlow === 'layout' ? l10n.pageType.layout : l10n.pageType.model;
         //stepLabel = `Choose a title for the page based on ${typeOfPage} '${label}'`;
-        stepLabel = i18n.formatString(i18n.insertTitle, typeOfPage, label);
+        stepLabel = l10n.formatString(l10n.insertTitle, typeOfPage, label);
         break;
 
       case 'done':
-        stepLabel = i18n.stepLabel.done;
+        stepLabel = l10n.stepLabel.done;
         break;
 
       default:
@@ -532,9 +547,8 @@ class MpatNewPage extends React.PureComponent {
     }
 
     let st = this.state.stepTag.toLowerCase();
-    let flow = i18n.flow[st];
-    //console.log(st, flow, i18n.getLanguage());//, i18n.getInterfaceLanguage());
-    //console.log('state', this.state);
+    let flow = l10n.flow[st];
+    //console.log(st, flow, l10n.getLanguage());//, l10n.getInterfaceLanguage());
     return (<div className="mpat">
       <div>
         <h3>{flow}</h3>

@@ -1,4 +1,10 @@
-import axios from 'axios';
+/**
+ * Create, Read, Update and Delete class for MPAT REST API
+ * 
+ * @author Jean-Philippe Ruijs
+ */
+
+ import axios from 'axios';
 
 export default class CRUD {
   constructor(restRootUrl) {
@@ -9,7 +15,7 @@ export default class CRUD {
   get(onSuccess, onError) {
     axios.get(this.restRootUrl, {})
       .then((v) => {
-        // because there may be irrelevant wordpress errors we strip them
+        //FIXME because there may be irrelevant wordpress errors prefixing the response, so we strip them
         let w = v.data;
         if (v.data.indexOf('>') > -1) {
           let li = v.data.lastIndexOf('>');
@@ -18,7 +24,7 @@ export default class CRUD {
         if (typeof w === 'string') {
           w = JSON.parse(w);
         }
-        console.log(this.restRootUrl, 'data', w);
+        //console.log(this.restRootUrl, 'data', w);
         onSuccess.call(null, w);
       })
       .catch((e) => {

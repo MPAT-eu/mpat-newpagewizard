@@ -1,7 +1,7 @@
 {
     "name" : "mpat/mpat-newpagewizard",
     "description" : "Wizard for creating new pages for MPAT",
-    "version" : "1.0.0",
+    "version" : "2.0.3",
     "license" : "GPL2",
     "authors" : [{
         "name" : "Jean-Philippe Ruijs",
