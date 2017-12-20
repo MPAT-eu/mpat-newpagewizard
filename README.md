@@ -21,13 +21,13 @@ It uses the REST API v2 which is [built-in](https://wordpress.org/support/topic/
         ...
         {
             "type" : "vcs",
-            "url" : "git@github.com:jeanphilipperuijs/mpat-newpage-wizard.git"
+            "url" : "git@github.com:MPAT-eu/mpat-newpagewizard.git"
         },
         ...
     ],
     "require" : {
         ...
-        "mpat/mpat-newpage-wizard": "dev-master",
+        "mpat/mpat-newpagewizard": "dev-master",
         ...
     },
 ```
@@ -36,7 +36,7 @@ It uses the REST API v2 which is [built-in](https://wordpress.org/support/topic/
 ```
 cd [wordpress]/plugins/
 
-git clone https://github.com/jeanphilipperuijs/mpat-newpage-wizard.git
+git clone https://github.com/MPAT-eu/mpat-newpagewizard.git
 ```
 ___
 
@@ -75,12 +75,4 @@ See also the list of [contributors](https://github.com/MPAT-eu/project/contribut
 
 This project is open source - see the [LICENSE.md](LICENSE.md) file for details
 
-## Acknowledgments
 
-* Hat tip to anyone who's code was used
-* Inspiration
-* etc
-
-The following error message will appear when starting the wizard if the plugin is missing:
-
-```Missing the custom REST for Page Layouts http://[your-host]/wp-json/mpat/v1/layout. Have you installed "mpat-core-plugin" ?```
