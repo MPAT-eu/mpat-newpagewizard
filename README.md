@@ -59,7 +59,7 @@ Add additional notes about how to deploy this on a live system
 
 ## Built With
 
-* [node](http://nodejs.org) - NodeJS 8
+* [node](http://nodejs.org) - NodeJS 12
 
 ## Contributing
 
