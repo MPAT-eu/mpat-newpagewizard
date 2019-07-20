@@ -21,16 +21,22 @@
   "homepage": "https://github.com/MPAT-eu/mpat-newpagewizard",
   "dependencies": {
     "axios": "^0.16.2",
-    "babel-core": "^6.26.0",
-    "babel-loader": "^6.4.1",
-    "babel-preset-es2015": "^6.24.1",
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.5",
+    "babel-preset-env": "^1.7.0",
     "babel-preset-react": "^6.24.1",
+    "babel-preset-es2015": "^6.24.1",
     "es2015": "^0.0.0",
     "merge2file": "^1.0.3",
     "react": "^15.6.2",
     "react-dom": "^15.6.2",
     "react-localization": "^0.1.3",
-    "webpack": "^2.7.0",
+    "uglifyjs-webpack-plugin": "^2.1.3",
+    "webpack": "^4.36.1",
     "webpack-dev-server": "^1.16.5"
+  },
+  "devDependencies": {
+    "webpack-cli": "^3.3.6",
+    "webpack-dev-server": "^3.3.1"
   }
 }
